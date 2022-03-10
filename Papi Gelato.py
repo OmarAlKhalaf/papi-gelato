@@ -1,6 +1,3 @@
-from re import X
-
-
 A = "Cone"
 B = "Bowl"
 
@@ -27,13 +24,35 @@ while step3 == "y":
         else:
             containers()  
     while True :
-        step2 = input("Would you like this ball(s) " + str( number ) + """ in 
+        if number <=3 :
+            for x in range(number):
+                extra = input("Wat flavors do you want we have : A) Strawberry, C) Chocolate, M) Mint or V) Vanilla ? :")
+                if extra == "a":
+                    extra = "Strawberry"
+                elif extra == "c":
+                    extra = "Chocolate"
+                elif extra == "m":
+                    extra = "Mint"
+                elif extra == "v":
+                    extra = "Vanilla" 
+        elif number <=8 :
+            for t in range(number):
+                extra = input("Wat flavors do you want we have : A) Strawberry, C) Chocolate, M) Mint or V) Vanilla ? :")
+                if extra == "a":
+                    extra = "Strawberry"
+                elif extra == "c":
+                    extra = "Chocolate"
+                elif extra == "m":
+                    extra = "Mint"
+                elif extra == "v":
+                    extra ="Vanilla"
+        step2 = input("Would you like this ball(s) " + str( number ) +""" in 
 A: cone
 B: bowl 
 A or B ? : """)
         if step2 == "a" :
             step2 = A
-            print("Here is your",step2, "with", number ,"ball(s).")
+            print("Here is your",step2, "with", number,"ball(s).")
             step3 = input("Would you like to order even more? (Y/N) ? :")
             if step3 == "n":
                 print("Thank you for coming and goodbye!")
@@ -43,7 +62,7 @@ A or B ? : """)
 
         elif step2 == "b":
             step2 = B
-            print("Here is your",step2, "with", number ,"ball(s). Would you like to order even more? (Y/N)”")
+            print("Here is your",step2, "with", number, extra ,"ball(s). Would you like to order even more? (Y/N)”")
             step3 = input("Would you like to order even more? (Y/N) ? :")
             if step3 == "n":
                 print("Thank you for coming and goodbye!")
