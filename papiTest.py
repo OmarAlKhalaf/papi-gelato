@@ -38,7 +38,7 @@ def herhalen():
 #=================================step 2 funtion =========================#
 def step2():
     global aantalBalls,amountCone,amountTrays
-    stap2 = input("Would you like this ball(s) " + str( aantalBalls ) +" in \nA: cone \nC: trays \nC or A o ? :").lower()
+    stap2 = input("Would you like this ball(s) " + str( aantalBalls ) +"in \nA: cone \nC: trays \nC or A o ? :").lower()
     if stap2 == 'a':
         amountCone += 1
     elif stap2 == 'c':
@@ -46,11 +46,8 @@ def step2():
 #================================= Factuur funtion ========================#
 def factuur():
     global trays,amountTrays,balls,amountb,cone,amountCone
-    print(f'Balls {amountb} x {1.10} Euro = {amountb*1.10:.2f}')
-    print(f"Cone {amountCone} x {1.25} Euro = {amountCone*1.25:.2f}")
-    print(f"Trays  {amountTrays} x {0.75} Euro = {amountTrays*0.75:.2f}")
+    print(f'balls{amountb} x {balls} Euro = {amountb*balls:.2f}')
     print(f'your total is : {amountCone*cone+trays*amountTrays+balls*amountb:.2f}')
-    print("Thanks for coming, Hanve a nice day.")
 #=================================== start funtion =========================#
 def start():
     global amountb,balls,aantalBalls
