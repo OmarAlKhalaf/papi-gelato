@@ -13,15 +13,13 @@ caramelSauces_creen = 0.60
 amountcaramelsauces_creen = 0
 caramelsauces_trays = 0.90
 amountcaramelsauces_trays = 0
-No = "No extra costs"
 anser = None
+liter_cost = 9.80
+amountliter = 0
+total = (liter_cost*int(amountliter))
+btw = (total / 100) *6
 
 # ==========================functions here under==========================#
-def containers ():
-    print("-------------------------------------------------")
-    print("Sorry, we don't have such large containers...")
-    print("_________________________________________________")
-
 def sorry ():
     print("-------------------------------------")
     print("Sorry dat is geen optie die we aanbieden...")
@@ -73,20 +71,40 @@ def step2():
 #================================= invoice funtion ========================#
 def invoice():
     global trays,amountTrays,balls,amountb,cone,amountCone
+    print('----------["Papi Gelato"]----------')
     print(f'Balls {amountb} x {1.10} Euro = {amountb*1.10:.2f}')
     print(f"Cone {amountCone} x {1.25} Euro = {amountCone*1.25:.2f}")
     print(f"Trays  {amountTrays} x {0.75} Euro = {amountTrays*0.75:.2f}")
     print(f"Your total topping is {whippedcream*amountcream+sprinkles*amountsprinkles+caramelSauces_creen*amountcaramelsauces_creen+caramelsauces_trays*amountcaramelsauces_trays:.2f} ")
     print(f'your total is : {amountCone*cone+trays*amountTrays+balls*amountb+whippedcream*amountcream+sprinkles*amountsprinkles+caramelSauces_creen*amountcaramelsauces_creen+caramelsauces_trays*amountcaramelsauces_trays:.2f}')
     print("Thanks for coming, Have a nice day.")
+#=================================== business ==============================#
+def business_question():
+    global ask,liter,amountliter,flaever
+    ask = int(input("Are you 1) private or 2) business?  \n1/2 :  "))
+    if ask == 1:
+        start()
+    elif ask == 2:
+        liter = int(input("how many liters do u like to order ? "))
+        amountliter = amountliter + liter
+        flaever(1)
+        invoice_business()
+#=================================== invoice_business ========================#
+def invoice_business():
+    global ask,liter,amountliter,btw,total,liter_cost
+    print('----------["Papi Gelato"]----------')
+    print(f"Liter                  {liter} x {9.50} = {liter*liter_cost} ")
+    print('                         ------')
+    print(f'Totaal(inclusief BTW) = {liter_cost*int(amountliter):.2f}')
+    print(f'BTW 6%                = {(liter_cost*int(amountliter) / 100) *6:.2f}')
 #=================================== start funtion =========================#
 def start():
-    global amountb,balls,aantalBalls
+    global amountb,balls,aantalBalls,ask,liter,amountliter
     check = True
-    aantalBalls = int(input('How many balls  do u want ? '))
+    print('----------["Welcome to Papi Gelato"]----------')
+    aantalBalls = int(input('How many balls do u want ? '))
     amountb = amountb + aantalBalls
     while check == True:
-
         if aantalBalls <= 3: 
             flaever(aantalBalls)
             extra_flaever(aantalBalls)
@@ -97,13 +115,15 @@ def start():
             extra_flaever(aantalBalls)
             check = False
 
-        elif aantalBalls > 8 :
-            pass
-
         else:
             sorry()
     step2()
     again()
-
-
+business_question()
 start()
+
+
+
+
+
+
